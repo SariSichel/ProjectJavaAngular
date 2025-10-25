@@ -13,9 +13,11 @@ public class Post {
     private String Name;
     private String description;
     private String lyrics;
-    private String audio;
+    private String audioPath;
     private LocalDate uploadDate;
     private LocalDate updateDate;
+    private String photoPath;
+
 
     //relations
    @ManyToOne
@@ -32,10 +34,9 @@ public class Post {
    private List<Comment> comments;
 
 
-
-    public Post(int postId, String postName, String description, String lyrics, LocalDate uploadDate, LocalDate updateDate, Users user, Category category, List<Users> usersTookPart, List<Comment> comments, PlayList playList, String audio) {
-        this.Id = postId;
-        this.Name = postName;
+    public Post(int Id, String Name, String description, String lyrics, LocalDate uploadDate, LocalDate updateDate, Users user, Category category, List<Users> usersTookPart, List<Comment> comments, PlayList playList, String audioPath, String photoPath) {
+        this.Id = Id;
+        this.Name = Name;
         this.description = description;
         this.lyrics = lyrics;
         this.uploadDate = uploadDate;
@@ -44,27 +45,24 @@ public class Post {
         this.category = category;
         this.usersTookPart = usersTookPart;
         this.comments = comments;
-        this.audio= audio;
+        this.audioPath= audioPath;
+        this.photoPath=photoPath;
     }
 
     public Post() {
-
     }
 
-    public int getPostId() {
-        return Id;
-    }
 
-    public void setPostId(int postId) {
-        this.Id = postId;
-    }
-
-    public String getPostName() {
+    public String getName() {
         return Name;
     }
 
-    public void setPostName(String postName) {
-        this.Name = postName;
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getId() {
+        return Id;
     }
 
     public String getDescription() {
@@ -111,12 +109,24 @@ public class Post {
         return category;
     }
 
-    public String getAudio() {
-        return audio;
-    }
-
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getAudio() {
+        return audioPath;
+    }
+
+    public String getAudioPath() {
+        return audioPath;
+    }
+
+    public void setAudioPath(String audioPath) {
+        this.audioPath = audioPath;
+    }
+
+    public void setAudio(String audioPath) {
+        this.audioPath = audioPath;
     }
 
     public List<Users> getUsersTookPart() {
@@ -135,8 +145,12 @@ public class Post {
         this.comments = comments;
     }
 
-
-    public void setAudio(String audio) {
-        this.audio = audio;
+    public String getPhotoPath() {
+        return photoPath;
     }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
+    }
+
 }

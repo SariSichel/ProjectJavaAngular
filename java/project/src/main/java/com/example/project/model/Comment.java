@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class Comment {
     @Id
     @GeneratedValue
-    private int Id;
+    private int id;
     private String text;
     private int rating;
     private LocalDate updateDate;
@@ -22,8 +22,8 @@ public class Comment {
     @ManyToOne
     private Post post;
 
-    public Comment(int commentId, String text, int rating, LocalDate updateDate, Users user, Post post) {
-        this.Id = commentId;
+    public Comment(int id, String text, int rating, LocalDate updateDate, Users user, Post post) {
+        this.id = id;
         this.text = text;
         this.rating = rating;
         this.updateDate = updateDate;
@@ -35,8 +35,8 @@ public class Comment {
 
     }
 
-    public int getCommentId() {
-        return Id;
+    public int getid() {
+        return id;
     }
 
     public String getText() {
@@ -59,8 +59,8 @@ public class Comment {
         return post;
     }
 
-    public void setCommentId(int commentId) {
-        this.Id = commentId;
+    public void setCommentid(int commentid) {
+        this.id = commentid;
     }
 
     public void setText(String text) {

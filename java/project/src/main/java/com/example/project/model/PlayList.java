@@ -34,11 +34,11 @@ public class PlayList {
 
     }
 
-    public int getPlatListId() {
+    public int getId() {
         return Id;
     }
 
-    public void setPlatListId(int platListId) {
+    public void setId(int platListId) {
         this.Id = platListId;
     }
 
