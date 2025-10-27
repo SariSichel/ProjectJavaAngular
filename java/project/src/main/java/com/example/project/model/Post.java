@@ -52,6 +52,9 @@ public class Post {
     public Post() {
     }
 
+    public int getId() {
+        return Id;
+    }
 
     public String getName() {
         return Name;
@@ -59,10 +62,6 @@ public class Post {
 
     public void setName(String name) {
         Name = name;
-    }
-
-    public int getId() {
-        return Id;
     }
 
     public String getDescription() {
@@ -113,19 +112,11 @@ public class Post {
         this.category = category;
     }
 
-    public String getAudio() {
-        return audioPath;
-    }
-
     public String getAudioPath() {
         return audioPath;
     }
 
     public void setAudioPath(String audioPath) {
-        this.audioPath = audioPath;
-    }
-
-    public void setAudio(String audioPath) {
         this.audioPath = audioPath;
     }
 

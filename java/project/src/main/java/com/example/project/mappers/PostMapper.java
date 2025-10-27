@@ -10,10 +10,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PostMapper {
-    default PostDTO postToDto(Post p) throws IOException
+
+    List<PostDTO> postsToDTO (List<Post> posts);
+    //לא בטוח שצריך את זה
+    Post postDTOtoPost(PostDTO post);
+    
+    default PostDTO postToDTO(Post p) throws IOException
     {
         PostDTO postDTO=new PostDTO();
 

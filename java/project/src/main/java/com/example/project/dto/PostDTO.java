@@ -26,13 +26,6 @@ public class PostDTO {
     private List<UsersTookPartDTO> usersTookPart;
     private List<CommentDTO> comments;
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
 
     public int getId() {
         return Id;
@@ -40,6 +33,14 @@ public class PostDTO {
 
     public void setId(int id) {
         Id = id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getDescription() {
@@ -77,7 +78,6 @@ public class PostDTO {
     public UsersTookPartDTO getUser() {
         return user;
     }
-
 
     public void setUser(UsersTookPartDTO user) {
         this.user = user;
