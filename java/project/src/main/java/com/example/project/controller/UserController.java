@@ -2,10 +2,8 @@ package com.example.project.controller;
 
 import com.example.project.dto.PostDTO;
 import com.example.project.mappers.*;
-import com.example.project.model.Post;
 import com.example.project.model.Users;
 import com.example.project.service.PhotoUtils;
-import com.example.project.service.PostRepository;
 import com.example.project.service.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
