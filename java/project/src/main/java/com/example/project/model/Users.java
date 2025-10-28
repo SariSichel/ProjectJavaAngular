@@ -11,7 +11,7 @@ public class Users {
     private String Name;
     private String mail;
     private String password;
-    private String photo;
+    private String photoPath;
 
     @OneToMany(mappedBy = "user")
     private List<Post> uploadPosts;
@@ -32,7 +32,7 @@ public class Users {
         this.uploadPosts = uploadPosts;
         this.comments = comments;
         this.playlists = playlists;
-        this.photo=photo;
+        this.photoPath=photo;
     }
 
     public Users() {
@@ -75,8 +75,8 @@ public class Users {
         return uploadPosts;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getPhotoPath() {
+        return photoPath;
     }
 
     public void setUploadPosts(List<Post> uploadPosts) {
@@ -100,7 +100,7 @@ public class Users {
     }
 
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setPhotoPath(String photo) {
+        this.photoPath = photo;
     }
 }

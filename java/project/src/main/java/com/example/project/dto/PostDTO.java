@@ -1,11 +1,5 @@
 package com.example.project.dto;
 
-import com.example.project.model.Category;
-import com.example.project.model.Comment;
-import com.example.project.model.PlayList;
-import com.example.project.model.Users;
-import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,18 +15,11 @@ public class PostDTO {
     private String photoPath;
     private  String photo;
     //מעלה הפוסט
-    private UsersTookPartDTO user;
+    private UserNameDTO user;
     private CategoryNameDTO category;
-    private List<UsersTookPartDTO> usersTookPart;
+    private List<UserNameDTO> usersTookPart;
     private List<CommentDTO> comments;
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
 
     public int getId() {
         return Id;
@@ -40,6 +27,14 @@ public class PostDTO {
 
     public void setId(int id) {
         Id = id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getDescription() {
@@ -74,12 +69,11 @@ public class PostDTO {
         this.updateDate = updateDate;
     }
 
-    public UsersTookPartDTO getUser() {
+    public UserNameDTO getUser() {
         return user;
     }
 
-
-    public void setUser(UsersTookPartDTO user) {
+    public void setUser(UserNameDTO user) {
         this.user = user;
     }
 
@@ -91,11 +85,11 @@ public class PostDTO {
         this.category = category;
     }
 
-    public List<UsersTookPartDTO> getUsersTookPart() {
+    public List<UserNameDTO> getUsersTookPart() {
         return usersTookPart;
     }
 
-    public void setUsersTookPart(List<UsersTookPartDTO> usersTookPart) {
+    public void setUsersTookPart(List<UserNameDTO> usersTookPart) {
         this.usersTookPart = usersTookPart;
     }
 

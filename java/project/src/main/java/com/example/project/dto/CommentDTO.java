@@ -7,7 +7,45 @@ public class CommentDTO {
     private String text;
     private int rating;
     private LocalDate updateDate;
-    //kind of user
-    //post??
+    private UserNameDTO userName;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public LocalDate getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDate updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public UserNameDTO getUserName() {
+        return userName;
+    }
+
+    public void setUserName(UserNameDTO userName) {
+        this.userName = userName;
+    }
 }
