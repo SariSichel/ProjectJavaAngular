@@ -14,16 +14,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 @RestController
 @RequestMapping("/api/Post")
 @CrossOrigin
 public class PostController {
+
     PostRepository postRepository;
     PostMapper postMapper;
     //לבדוק אם חייבים את הזרקות האלו
     UserNameMapper userNameMapper;
     CategoryMapper categoryMapper;
     CommentMapper commentMapper;
+
     @Autowired
     public PostController(PostRepository postRepository, PostMapper postMapper, UserNameMapper userNameMapper, CategoryMapper categoryMapper, CommentMapper commentMapper) {
         this.postRepository = postRepository;
@@ -33,9 +38,7 @@ public class PostController {
         this.commentMapper = commentMapper;
     }
 
-
-
-@GetMapping("/getPostById/{id}")
+    @GetMapping("/getPostById/{id}")
     public ResponseEntity<PostDTO> getPostById(@PathVariable long id){
     try{
         Post p=postRepository.findById(id).get();
@@ -51,11 +54,18 @@ public class PostController {
 @PostMapping("/addPost")
     public ResponseEntity<Post> addPost(@RequestPart("photo") MultipartFile photo, @RequestPart("post") Post p, @RequestPart("audio") MultipartFile audio){
         try{
+
             PhotoUtils.uploadImage(photo);
             p.setPhotoPath((photo.getOriginalFilename()));
+
+            String audioFolder = "uploads/audio/";
+            Path audioPath = Path.of(audioFolder + audio.getOriginalFilename());
+            Files.createDirectories(audioPath.getParent());
+            Files.write(audioPath, audio.getBytes());
+            p.setAudioPath(audioPath.toString());
+
             Post post=postRepository.save(p);
             return new ResponseEntity<>(post, HttpStatus.CREATED);
-            //לסדר את האודיו
 
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
