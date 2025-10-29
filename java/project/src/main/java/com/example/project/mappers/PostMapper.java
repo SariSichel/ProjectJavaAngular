@@ -40,9 +40,10 @@ public interface PostMapper {
 //        postDTO.setPhoto(Base64.getEncoder().encodeToString(bytePhoto));
         postDTO.setPhoto(PhotoUtils.getImage(p.getPhotoPath()));
 
-        Path audioFileName=Paths.get(p.getAudioPath());
-        byte[] byteAudio=Files.readAllBytes(audioFileName);
-        postDTO.setAudio(Base64.getEncoder().encodeToString(byteAudio));
+//        Path audioFileName=Paths.get(p.getAudioPath());
+//        byte[] byteAudio=Files.readAllBytes(audioFileName);
+//        postDTO.setAudio(Base64.getEncoder().encodeToString(byteAudio));
+        postDTO.setAudioPath(p.getAudioPath());
 
         return postDTO;
     }

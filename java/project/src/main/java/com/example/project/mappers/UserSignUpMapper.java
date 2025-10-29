@@ -10,9 +10,12 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UserSignUpMapper {
+
     List<UserSignUpDTO> usrsToUserSignUpDtoList(List<Users> l);
+
     Users userSignUpDTOtoUser(UserSignUpDTO u);
-    default UserSignUpDTO userToUserSignUpDTO(Users u) throws IOException {
+
+    default UserSignUpDTO userSignUpToDTO(Users u) throws IOException {
         UserSignUpDTO userSignUpDTO= new UserSignUpDTO();
         userSignUpDTO.setName(u.getUserName());
         userSignUpDTO.setPassword(u.getPassword());

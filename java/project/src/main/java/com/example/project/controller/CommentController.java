@@ -1,5 +1,7 @@
 package com.example.project.controller;
 
+import com.example.project.dto.CommentDTO;
+import com.example.project.mappers.CommentMapper;
 import com.example.project.model.Category;
 import com.example.project.model.Comment;
 import com.example.project.service.CategoryRepository;
@@ -13,21 +15,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 public class CommentController {
+
     private CommentRepository commentRepository;
+    private CommentMapper commentMapper;
 
     @Autowired
-    public CommentController(CommentRepository commentRepository){
-        this.commentRepository=commentRepository;
+    public CommentController(CommentRepository commentRepository, CommentMapper commentMapper) {
+        this.commentRepository = commentRepository;
+        this.commentMapper = commentMapper;
     }
 
     @GetMapping("/getCommentById/{id}")
-    public ResponseEntity<Comment> getCommentById(@PathVariable Long id){
+    public ResponseEntity<CommentDTO> getCommentById(@PathVariable Long id){
         try{
             Comment c=commentRepository.findById(id).orElse(null);
             if(c==null){
                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(c, HttpStatus.OK);
+            return new ResponseEntity<>(commentMapper.commentToDTO(c), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

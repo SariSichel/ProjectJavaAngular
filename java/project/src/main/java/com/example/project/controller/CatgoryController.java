@@ -1,5 +1,7 @@
 package com.example.project.controller;
 
+import com.example.project.dto.CategoryNameDTO;
+import com.example.project.mappers.CategoryMapper;
 import com.example.project.model.Category;
 import com.example.project.service.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,21 +15,24 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class CatgoryController {
+
     private CategoryRepository categoryRepository;
+    private CategoryMapper categoryMapper;
 
     @Autowired
-    public CatgoryController(CategoryRepository categoryRepository){
-        this.categoryRepository=categoryRepository;
+    public CatgoryController(CategoryRepository categoryRepository, CategoryMapper categoryMapper) {
+        this.categoryRepository = categoryRepository;
+        this.categoryMapper = categoryMapper;
     }
 
     @GetMapping("/getCategoryById/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable Long id){
+    public ResponseEntity<CategoryNameDTO> getCategoryById(@PathVariable Long id){
         try{
             Category c=categoryRepository.findById(id).orElse(null);
             if(c==null){
                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(c, HttpStatus.OK);
+            return new ResponseEntity<>(categoryMapper.categoryToDTO(c), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
