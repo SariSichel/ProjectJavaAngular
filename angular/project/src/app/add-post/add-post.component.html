@@ -1,0 +1,36 @@
+<div>
+    <h1>add post</h1>
+<form #AddForm="ngForm">
+
+    <label>song name:</label>
+    <input type="text" [(ngModel)]="newPost.name" name="name" minlength="2" maxlength="50" required #nameId="ngModel">
+    @if(nameId.errors){
+        @if(nameId.errors['minlength']){
+            <span>your song name is too short</span>
+        }
+        @if(nameId.errors['maxlength']){
+            <span>your song name is too long</span>
+        }
+        @if(nameId.errors['required']){
+            <span>you have to enter the song name</span>
+        }
+    }
+
+        <label>description:</label>
+        <input type="text" [(ngModel)]="newPost.description" name="description" required="false">
+
+        <label>lyrics:</label>
+        <input type="text" [(ngModel)]="newPost.lyrics" required="false">
+
+        <!-- אודיו ותמונה -->
+        <!-- קומבובוקס של קטגוריות -->
+        <label>people took part:</label>
+        <input type="text" [(ngModel)]="newPost.usersTookPart" required="false">
+
+    </form>
+
+
+
+
+
+</div>
